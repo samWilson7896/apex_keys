@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Trainer Pro</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+    
+    <div class="header">
+        <h1 class="logo">Apex Keys</h1>
+        <p class="subtitle">a minimalistic typing test</p>
+    </div>
+
+    <div class="controls">
+        <div class="btn-group">
+            <button class="time-btn active" data-time="15">15s</button>
+            <button class="time-btn" data-time="30">30s</button>
+            <button class="time-btn" data-time="60">60s</button>
+            <button class="time-btn" data-time="120">120s</button>
+        </div>
+
+        <div class="btn-group">
+            <button class="word-btn active" data-words="25">25</button>
+            <button class="word-btn" data-words="50">50</button>
+            <button class="word-btn" data-words="100">100</button>
+        </div>
+
+        <div class="control-group">
+            <label for="mode">Mode:</label>
+            <select id="mode">
+                <option value="time">Time</option>
+                <option value="words">Words</option>
+                <option value="passage">Passage</option>
+            </select>
+        </div>
+
+        <button id="restart">↻ Restart</button>
+        <button class="theme-toggle" id="theme-toggle">🌙</button>
+    </div>
+
+    <div class="main-container">
+        <div class="typing-container">
+            <div class="text-display" id="text-display" tabindex="0"> 
+                <div class="text-container" id="text-container"></div>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat">
+                    <div class="stat-value" id="wpm-live">0</div>
+                    <div class="stat-label">WPM</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="raw-wpm-live">0</div>
+                    <div class="stat-label">Raw</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="accuracy-live">100</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="time-display">60</div>
+                    <div class="stat-label">Time</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <div class="results-header">
+                <h2>Test Complete!</h2>
+                <p style="color: var(--text-secondary)">Great job! Here are your results</p>
+            </div>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-value" id="final-wpm">0</div>
+                    <div class="result-label">WPM</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value" id="final-raw">0</div>
+                    <div class="result-label">Raw WPM</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value" id="final-accuracy">0</div>
+                    <div class="result-label">Accuracy</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value" id="final-consistency">0</div>
+                    <div class="result-label">Consistency</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value" id="final-chars">0</div>
+                    <div class="result-label">Characters</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value" id="final-time">0</div>
+                    <div class="result-label">Time (s)</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">WPM Over Time</div>
+                <canvas id="wpm-chart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="instructions">
+        <span class="instruction-item"><span class="key">Tab</span> or <span class="key">F5</span> to restart</span>
+        <span class="instruction-item"><span class="key">Enter</span> to end test</span>
+        <span class="instruction-item"><span class="key">Esc</span> to refocus</span>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
